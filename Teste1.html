@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Gustavo Renan Petry" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da adivinhação</title>
+    <link rel="stylesheet" href="design.css">
+    
+
+</head>
+<body>
+    <button id="reloadButton">Reniciar jogo!</button>
+
+    <script>
+        pulaLinha();
+        function recarregarPagina() {
+            window.location.reload();
+        }
+
+        function pulaLinha(){
+            document.write("<br>");
+        }
+
+        function mostra(frase){
+            document.write(frase);
+            pulaLinha();
+        }
+
+        var numeroPensado = Math.round(Math.random() * 10);
+
+        var tentativas = 1;
+
+        while(tentativas <= 3){
+
+            var chute = parseInt(prompt("Digite seu chute: "));
+
+
+            if (chute == numeroPensado) {
+                mostra("Parabéns, você acertou na tentativa " + tentativas + " de 3" );
+                break;
+            } else{
+                mostra("Que pena, você errou!");
+            }
+            tentativas++;
+               
+        }
+        mostra("FIM ");
+        document.getElementById("reloadButton").addEventListener("click", recarregarPagina);
+        reloadButton.focus();
+
+    </script>
+
+    
+</body>
+</html>
