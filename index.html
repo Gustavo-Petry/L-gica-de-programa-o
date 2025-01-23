@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Jogo adivinhaação!</title>
+	<link rel="stylesheet" href="design.css">
+</head>
+<body>
+
+	<h1> Jogo da adivinhação!</h1>
+	<p> Tente adivinhar os 5 números gerados pelo sistema! </p>
+	<p> Os números são de 1 a 10! </p>
+	<p> Boa Sorte!</p>
+
+	<div class="input-container">
+        <input type="text" placeholder="Digite seu palpite">
+        <button>Compare com os 5 números gerados!</button>
+    </div>
+
+	
+		<a href="https://www.linkedin.com/in/gustavo-renan-petry-5103b82ab" target="_blank" class="linkedin-button">
+        Visite meu LinkedIn
+	
+</body>
+</html>
+<meta charset="UTF-8">
+
+
+<script>
+
+	function sorteia() {
+
+		return Math.round(Math.random() * 10);
+	}
+
+	function sorteiaNumeros(quantidade) {
+
+		var segredos = [];
+
+		var numero = 1;
+
+		while(numero <= quantidade) {
+
+			var numeroAleatorio = sorteia();
+
+			if(numeroAleatorio !== 0 ) {
+
+				var achou = false;
+
+				for(var posicao = 0; posicao < segredos.length; posicao++) {
+
+					if(segredos[posicao] == numeroAleatorio) {
+						achou = true;
+						break;
+					}
+				}
+
+				if(achou == false) {
+					segredos.push(numeroAleatorio);	
+					numero++;
+				} 
+			}
+		}
+
+		return segredos;
+	}
+
+	var segredos = sorteiaNumeros(5);
+
+	console.log(segredos);
+
+	var input = document.querySelector("input");
+	input.focus();	
+
+	function verifica() {
+
+		var achou = false;
+
+		for(var posicao = 0; posicao < segredos.length; posicao++) {
+
+			if(input.value == segredos[posicao]) {
+
+				alert("Você ACERTOU!");
+				achou = true;
+				break;
+			}
+		}
+
+		if(achou == false) {
+
+			alert("Você ERROU!");	
+		}
+		
+
+		input.value = "";
+		input.focus();		
+	}
+
+	var button = document.querySelector("button");
+
+	button.onclick = verifica;
+
+
+</script>
